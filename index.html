@@ -4,877 +4,457 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>LA Provisions — A Food Guide</title>
+<title>LA Provisions — A Food & Adventure Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Karla:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #141110;
-  --bg2: #1C1814;
-  --cream: #F2E8DB;
-  --cream-soft: rgba(242,232,219,.6);
-  --cream-muted: rgba(242,232,219,.3);
-  --cream-faint: rgba(242,232,219,.08);
-  --sienna: #C4522A;
-  --sienna-soft: rgba(196,82,42,.15);
-  --gold: #D4A54A;
-  --gold-soft: rgba(212,165,74,.12);
-  --sage: #7A9E7E;
-  --sage-soft: rgba(122,158,126,.12);
-  --r: 12px;
+  --bg:#FFF;--warm:#FBF9F6;--card:#FFF;--ink:#2C2825;--soft:#6B6560;--muted:#A8A29E;--faint:#E7E5E4;--ghost:#F5F3F1;
+  --coral:#E8764B;--coral-s:#FFF1EB;--ocean:#1B8A9E;--ocean-s:#E8F6F8;--sage:#4E8C57;--sage-s:#EDF5EE;
+  --plum:#8B6BA3;--plum-s:#F3EEF7;--gold:#C49B2A;--gold-s:#FDF6E3;--slate:#5B7083;--slate-s:#EDF1F4;--r:14px;
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-body {
-  font-family: 'Karla', sans-serif;
-  background: var(--bg);
-  color: var(--cream);
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
 
-/* ═══════ COVER ═══════ */
-.cover {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 40px 28px 48px;
-  position: relative;
-  overflow: hidden;
-}
-.cover::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 30% 20%, rgba(196,82,42,.12) 0%, transparent 60%),
-    radial-gradient(ellipse at 70% 80%, rgba(212,165,74,.08) 0%, transparent 50%),
-    var(--bg);
-}
-.cover::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  opacity: .5;
-  pointer-events: none;
-}
-.cover-tag {
-  position: relative;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--sienna);
-  margin-bottom: 24px;
-}
-.cover h1 {
-  position: relative;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 56px;
-  font-weight: 300;
-  line-height: 1.0;
-  letter-spacing: -1px;
-  margin-bottom: 12px;
-}
-.cover h1 strong { font-weight: 700; }
-.cover h1 em { font-style: italic; color: var(--gold); }
-.cover-sub {
-  position: relative;
-  font-size: 15px;
-  color: var(--cream-soft);
-  font-weight: 300;
-  line-height: 1.7;
-  max-width: 320px;
-  margin-bottom: 32px;
-}
-.cover-meta {
-  position: relative;
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.cover-pill {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  border: 1px solid var(--cream-faint);
-  border-radius: 100px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--cream-muted);
-}
+.cover{min-height:60svh;display:flex;flex-direction:column;justify-content:flex-end;padding:32px 24px 40px;background:var(--warm);position:relative}
+.cover-tag{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--coral);margin-bottom:16px}
+.cover h1{font-family:'Fraunces',serif;font-size:44px;font-weight:400;line-height:1.08;letter-spacing:-1px;margin-bottom:12px}
+.cover h1 em{font-style:italic;font-weight:300;color:var(--coral)}
+.cover-sub{font-size:14px;color:var(--soft);font-weight:300;line-height:1.7;max-width:340px;margin-bottom:24px}
+.cover-meta{display:flex;gap:7px;flex-wrap:wrap}
+.pill{padding:6px 12px;background:var(--bg);border:1px solid var(--faint);border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--soft)}
 
-/* ═══════ STICKY NAV ═══════ */
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(20,17,16,.9);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid var(--cream-faint);
-  padding: 0 20px;
-  display: flex;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-.nav::-webkit-scrollbar { display: none; }
-.nav a {
-  flex-shrink: 0;
-  padding: 14px 16px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--cream-muted);
-  border-bottom: 2px solid transparent;
-  transition: all .25s;
-  white-space: nowrap;
-}
-.nav a.active, .nav a:active {
-  color: var(--cream);
-  border-bottom-color: var(--sienna);
-}
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--faint);padding:0 16px;display:flex;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{flex-shrink:0;padding:12px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.5px;text-transform:uppercase;text-decoration:none;color:var(--muted);border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap}
+.nav a.active,.nav a:active{color:var(--ink);border-bottom-color:var(--coral)}
 
-/* ═══════ CHAPTER (DAY) ═══════ */
-.chapter {
-  padding: 56px 28px 32px;
-  border-top: 1px solid var(--cream-faint);
-}
-.ch-eyebrow {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--sienna);
-  margin-bottom: 8px;
-}
-.ch-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 96px;
-  font-weight: 300;
-  line-height: .85;
-  color: var(--cream-faint);
-  letter-spacing: -4px;
-  margin-bottom: -12px;
-  position: relative;
-}
-.ch-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 32px;
-  font-weight: 500;
-  line-height: 1.2;
-  margin-bottom: 8px;
-  position: relative;
-}
-.ch-subtitle {
-  font-size: 14px;
-  color: var(--cream-soft);
-  font-weight: 300;
-  line-height: 1.7;
-  max-width: 440px;
-  margin-bottom: 40px;
-}
+.day{padding:32px 24px 24px;border-top:1px solid var(--faint)}
+.day-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.day-num{font-family:'Fraunces',serif;font-size:48px;font-weight:300;color:var(--ghost);line-height:1;letter-spacing:-2px}
+.day-eye{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--coral)}
+.day-title{font-family:'Fraunces',serif;font-size:24px;font-weight:500;line-height:1.2;margin-bottom:6px}
+.day-sub{font-size:13px;color:var(--soft);font-weight:300;line-height:1.7;margin-bottom:24px}
 
-/* ═══════ COURSE CARD ═══════ */
-.course {
-  background: var(--bg2);
-  border: 1px solid var(--cream-faint);
-  border-radius: var(--r);
-  margin-bottom: 20px;
-  overflow: hidden;
-  position: relative;
-}
-.course-header {
-  padding: 20px 20px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-.course-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 4px;
-}
-.course-label.breakfast { background: var(--gold-soft); color: var(--gold); }
-.course-label.lunch { background: var(--sienna-soft); color: var(--sienna); }
-.course-label.snack { background: var(--sage-soft); color: var(--sage); }
-.course-label.dinner { background: rgba(168,140,200,.12); color: #B8A0D0; }
-.course-label.dessert { background: var(--gold-soft); color: var(--gold); }
-.course-time {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--cream-muted);
-}
-.course-body {
-  padding: 16px 20px 20px;
-}
-.course-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 4px;
-}
-.course-type {
-  font-size: 13px;
-  color: var(--cream-muted);
-  font-style: italic;
-  margin-bottom: 12px;
-}
-.course-desc {
-  font-size: 14px;
-  color: var(--cream-soft);
-  font-weight: 300;
-  line-height: 1.7;
-  margin-bottom: 16px;
-}
-.course-desc strong { color: var(--cream); font-weight: 600; }
-.course-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 16px;
-}
-.tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--cream-muted);
-  padding: 4px 10px;
-  border: 1px solid var(--cream-faint);
-  border-radius: 100px;
-}
-.tag.warn {
-  border-color: rgba(196,82,42,.3);
-  color: var(--sienna);
-  background: var(--sienna-soft);
-}
-.course-action {
-  display: block;
-  padding: 12px 20px;
-  border-top: 1px solid var(--cream-faint);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: background .2s;
-  -webkit-tap-highlight-color: transparent;
-}
-.course-action:active { background: var(--cream-faint); }
-.course-action span {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--cream);
-}
-.course-action .addr {
-  font-size: 12px;
-  color: var(--cream-muted);
-  font-weight: 300;
-}
-.course-action svg {
-  width: 16px;
-  height: 16px;
-  color: var(--cream-muted);
-  flex-shrink: 0;
-}
+.card{background:var(--card);border:1px solid var(--faint);border-radius:var(--r);margin-bottom:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.025)}
+.card-top{padding:12px 14px 0;display:flex;justify-content:space-between;align-items:center}
+.badge{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:5px}
+.badge.bk{background:var(--gold-s);color:var(--gold)}.badge.lu{background:var(--coral-s);color:var(--coral)}
+.badge.sn{background:var(--sage-s);color:var(--sage)}.badge.di{background:var(--plum-s);color:var(--plum)}
+.badge.ds{background:var(--gold-s);color:var(--gold)}.badge.fe{background:var(--ocean-s);color:var(--ocean)}
+.badge.ac{background:var(--slate-s);color:var(--slate)}
+.card-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted)}
+.card-body{padding:10px 14px 12px}
+.card-name{font-family:'Fraunces',serif;font-size:19px;font-weight:600;line-height:1.2;margin-bottom:2px}
+.card-type{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:8px}
+.card-desc{font-size:13px;color:var(--soft);font-weight:300;line-height:1.7;margin-bottom:10px}
+.card-desc strong{color:var(--ink);font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.t{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--muted);padding:3px 8px;border:1px solid var(--faint);border-radius:100px;background:var(--warm)}
+.t.w{border-color:rgba(232,118,75,.2);color:var(--coral);background:var(--coral-s)}
+.card-link{display:flex;padding:10px 14px;border-top:1px solid var(--faint);text-decoration:none;align-items:center;justify-content:space-between;-webkit-tap-highlight-color:transparent}
+.card-link:active{background:var(--warm)}
+.card-link span{font-size:12px;font-weight:500;color:var(--ink)}
+.card-link .ad{font-size:11px;color:var(--muted);font-weight:300}
+.card-link svg{width:14px;height:14px;color:var(--muted);flex-shrink:0}
 
-/* ═══════ BETWEEN — ACTIVITY ASIDE ═══════ */
-.between {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  padding: 16px 0 24px;
-  margin: 4px 0;
-}
-.between-line {
-  width: 1px;
-  min-height: 40px;
-  align-self: stretch;
-  background: linear-gradient(to bottom, var(--cream-faint), transparent);
-  margin-left: 14px;
-  flex-shrink: 0;
-}
-.between-content {
-  flex: 1;
-}
-.between-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--sage);
-  margin-bottom: 4px;
-}
-.between-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 17px;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--cream-muted);
-  line-height: 1.5;
-}
+.gap{display:flex;gap:12px;padding:8px 0 12px}
+.gap-line{width:2px;min-height:24px;align-self:stretch;background:linear-gradient(to bottom,var(--faint),transparent);margin-left:12px;flex-shrink:0;border-radius:2px}
+.gap-body{flex:1}
+.gap-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--ocean);margin-bottom:3px}
+.gap-text{font-size:13px;font-weight:300;color:var(--soft);line-height:1.65}
+.gap-text strong{color:var(--ink);font-weight:500}
 
-/* ═══════ ALERT ═══════ */
-.alert {
-  margin-bottom: 24px;
-  padding: 14px 16px;
-  border-radius: 8px;
-  border: 1px solid rgba(196,82,42,.2);
-  background: rgba(196,82,42,.06);
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--cream-soft);
-}
-.alert strong { color: var(--sienna); }
-.alert-icon { flex-shrink: 0; font-size: 14px; margin-top: 1px; }
+.alert{margin-bottom:12px;padding:12px 14px;border-radius:10px;border:1px solid rgba(232,118,75,.15);background:var(--coral-s);display:flex;gap:8px;font-size:12px;line-height:1.65;color:var(--soft)}
+.alert strong{color:var(--coral);font-weight:600}
 
-/* ═══════ HONORABLE MENTIONS ═══════ */
-.mentions {
-  padding: 56px 28px;
-  border-top: 1px solid var(--cream-faint);
-}
-.mentions-grid {
-  display: grid;
-  gap: 12px;
-}
-.mention {
-  padding: 16px;
-  border: 1px solid var(--cream-faint);
-  border-radius: var(--r);
-  background: var(--bg2);
-}
-.mention-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 19px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-.mention-desc {
-  font-size: 13px;
-  color: var(--cream-muted);
-  font-weight: 300;
-  line-height: 1.6;
-}
-.mention-tag {
-  display: inline-block;
-  margin-top: 8px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--cream-muted);
-  padding: 3px 8px;
-  border: 1px solid var(--cream-faint);
-  border-radius: 4px;
-}
+.mentions{padding:32px 24px;border-top:1px solid var(--faint);background:var(--warm)}
+.mentions-grid{display:grid;gap:8px}
+.m{padding:12px 14px;border:1px solid var(--faint);border-radius:var(--r);background:var(--card)}
+.m-name{font-family:'Fraunces',serif;font-size:15px;font-weight:600;margin-bottom:2px}
+.m-desc{font-size:12px;color:var(--muted);font-weight:300;line-height:1.6}
+.m-tag{display:inline-block;margin-top:5px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);padding:2px 7px;border:1px solid var(--faint);border-radius:5px}
 
-/* ═══════ TIPS ═══════ */
-.tips {
-  padding: 0 28px 56px;
-}
-.tips-box {
-  padding: 20px;
-  border: 1px solid var(--cream-faint);
-  border-radius: var(--r);
-}
-.tips-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 12px;
-}
-.tips-list {
-  list-style: none;
-}
-.tips-list li {
-  padding: 8px 0;
-  border-bottom: 1px solid var(--cream-faint);
-  font-size: 13px;
-  color: var(--cream-soft);
-  font-weight: 300;
-  line-height: 1.6;
-}
-.tips-list li:last-child { border-bottom: none; }
-.tips-list li strong { color: var(--cream); font-weight: 600; }
+.tips{padding:0 24px 32px}
+.tips-box{padding:16px;border:1px solid var(--faint);border-radius:var(--r);background:var(--warm)}
+.tips-title{font-family:'Fraunces',serif;font-size:17px;font-weight:500;margin-bottom:10px}
+.tips-list{list-style:none}
+.tips-list li{padding:6px 0;border-bottom:1px solid var(--faint);font-size:12px;color:var(--soft);font-weight:300;line-height:1.6}
+.tips-list li:last-child{border-bottom:none}
+.tips-list li strong{color:var(--ink);font-weight:500}
 
-/* ═══════ FOOTER ═══════ */
-.footer {
-  text-align: center;
-  padding: 40px 28px 80px;
-  border-top: 1px solid var(--cream-faint);
-}
-.footer-mark {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 24px;
-  font-weight: 300;
-  font-style: italic;
-  color: var(--cream-muted);
-  margin-bottom: 8px;
-}
-.footer-sub {
-  font-size: 12px;
-  color: var(--cream-muted);
-  font-weight: 300;
-}
+.footer{text-align:center;padding:28px 24px 64px;border-top:1px solid var(--faint);background:var(--warm)}
+.footer-mark{font-family:'Fraunces',serif;font-size:19px;font-weight:400;font-style:italic;color:var(--muted);margin-bottom:4px}
+.footer-sub{font-size:11px;color:var(--muted);font-weight:300}
 
-/* ═══════ ANIMATIONS ═══════ */
-.course, .between, .mention { 
-  animation: fadeUp .5s ease both; 
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ═══════ RESPONSIVE ═══════ */
-@media (min-width: 600px) {
-  .chapter, .mentions, .tips { max-width: 520px; margin-left: auto; margin-right: auto; }
-  .cover { max-width: 520px; margin-left: auto; margin-right: auto; }
-  .cover h1 { font-size: 72px; }
-}
-[id] { scroll-margin-top: 52px; }
+@media(min-width:600px){.day,.mentions,.tips,.cover{max-width:540px;margin-left:auto;margin-right:auto}.cover h1{font-size:56px}}
+[id]{scroll-margin-top:48px}
 </style>
 </head>
 <body>
 
-<!-- ═══════ COVER ═══════ -->
 <div class="cover">
   <div class="cover-tag">A Curated Field Guide</div>
-  <h1><strong>Los Angeles</strong><br><em>Provisions</em></h1>
-  <p class="cover-sub">Twelve essential stops across three days. Breakfast, lunch, a snack, and dinner — with room to breathe, explore, and actually enjoy the city.</p>
+  <h1>Los Angeles<br><em>Provisions</em></h1>
+  <p class="cover-sub">Four days of food, beaches, and island life — with room to breathe and actually enjoy the city.</p>
   <div class="cover-meta">
-    <span class="cover-pill">📍 Palihouse WeHo</span>
-    <span class="cover-pill">Sun 4pm → Tue Night</span>
+    <span class="pill">📍 Palihouse WeHo</span>
+    <span class="pill">Sun 4pm → Wed Night</span>
+    <span class="pill">🏝 Catalina Day Trip</span>
   </div>
 </div>
 
-<!-- ═══════ NAV ═══════ -->
 <nav class="nav">
-  <a href="#day1" class="active">01 — Sun</a>
-  <a href="#day2">02 — Mon</a>
-  <a href="#day3">03 — Tue</a>
-  <a href="#cuts">Cuts</a>
+  <a href="#day1" class="active">Sun</a>
+  <a href="#day2">Mon</a>
+  <a href="#day3">Tue</a>
+  <a href="#day4">Wed · Catalina</a>
+  <a href="#cuts">Extras</a>
 </nav>
 
-<!-- ═══════════════════════════════════════════════
-     DAY 1 — SUNDAY
-     ═══════════════════════════════════════════════ -->
-<section class="chapter" id="day1">
-  <div class="ch-eyebrow">Chapter One</div>
-  <div class="ch-num">01</div>
-  <h2 class="ch-title">The Arrival</h2>
-  <p class="ch-subtitle">You land at 4pm — no time for polite easing-in. Howlin' Ray's is closed Monday and Tuesday, so tonight is the only shot. Everything else routes back west toward the hotel.</p>
+<!-- ══ DAY 1 — SUNDAY ══ -->
+<section class="day" id="day1">
+  <div class="day-head"><div class="day-num">01</div><div class="day-eye">Day One</div></div>
+  <h2 class="day-title">The Arrival</h2>
+  <p class="day-sub">Land at 4pm, check in, golden hour on Melrose, Italian dinner, froyo nightcap.</p>
+
+  <div class="gap">
+    <div class="gap-line"></div>
+    <div class="gap-body">
+      <div class="gap-label">After check-in · 5 PM</div>
+      <div class="gap-text">Walk to the <strong>Paul Smith Pink Wall</strong> on Melrose — 5 min from hotel, perfect golden hour light. Browse boutiques: Maxfield, Fred Segal, Reformation, Wasteland (vintage). The strip between Fairfax and La Brea is peak LA fashion.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top"><span class="badge di">Dinner</span><span class="card-time">7:00 PM</span></div>
+    <div class="card-body">
+      <div class="card-name">Jones Hollywood</div>
+      <div class="card-type">Italian — West Hollywood</div>
+      <p class="card-desc">Beloved WeHo institution. <strong>Spaghetti & meatballs</strong>, wood-fired pizza, and the legendary <strong>sizzling apple pie</strong> in brown sugar sauce. Dimly lit, cool without trying. Call (323) 850-1726 to reserve.</p>
+      <div class="tags"><span class="t">⭐ 4.3</span><span class="t">Opens 7pm</span><span class="t">~75 min</span><span class="t">$$</span></div>
+    </div>
+    <a class="card-link" href="https://maps.apple.com/?q=Jones+Hollywood&ll=34.0905,-118.3496&z=17" target="_blank">
+      <div><span>Open in Maps</span><br><span class="ad">7205 Santa Monica Blvd</span></div>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-top"><span class="badge ds">Nightcap</span><span class="card-time">9:00 PM</span></div>
+    <div class="card-body">
+      <div class="card-name">The Bigg Chill</div>
+      <div class="card-type">Frozen Yogurt — West LA</div>
+      <p class="card-desc"><strong>4.9★ from 4,400+ reviews</strong> — best froyo in LA. 15 min west, on the way back. Hit an ATM first.</p>
+      <div class="tags"><span class="t w">💵 Cash Only</span><span class="t">Closes 10pm</span><span class="t">~20 min</span></div>
+    </div>
+    <a class="card-link" href="https://maps.apple.com/?q=The+Bigg+Chill&ll=34.0437,-118.4314&z=17" target="_blank">
+      <div><span>Open in Maps</span><br><span class="ad">10850 W Olympic Blvd</span></div>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ══ DAY 2 — MONDAY ══ -->
+<section class="day" id="day2">
+  <div class="day-head"><div class="day-num">02</div><div class="day-eye">Day Two</div></div>
+  <h2 class="day-title">Beach to Beverly Hills</h2>
+  <p class="day-sub">Matcha first, then coast — Santa Monica, Venice, Abbot Kinney, bagels. Persian dinner in Beverly Hills.</p>
+
+  <div class="card">
+    <div class="card-top"><span class="badge bk">Breakfast</span><span class="card-time">7:00 AM</span></div>
+    <div class="card-body">
+      <div class="card-name">Community Goods</div>
+      <div class="card-type">The Bieber Café — West Hollywood</div>
+      <p class="card-desc"><strong>Best matcha in LA</strong> — order it. Go at 7am before the line builds. Banana bread and chocolate croissant are fan favorites too.</p>
+      <div class="tags"><span class="t">⭐ 4.3</span><span class="t">Opens 7am</span><span class="t">Closes 4pm</span><span class="t">$</span></div>
+    </div>
+    <a class="card-link" href="https://maps.apple.com/?q=Community+Goods+LA&ll=34.0842,-118.3636&z=17" target="_blank">
+      <div><span>Open in Maps</span><br><span class="ad">710 N Edinburgh Ave, WeHo</span></div>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+
+  <div class="gap">
+    <div class="gap-line"></div>
+    <div class="gap-body">
+      <div class="gap-label">Morning · Beach</div>
+      <div class="gap-text"><strong>Santa Monica Pier</strong> (~30 min drive) — Ferris wheel, Route 66 sign, Third Street Promenade. Walk or bike south to <strong>Venice Beach</strong> — Muscle Beach, skate park, murals. Then <strong>Abbot Kinney Blvd</strong> for boutiques & galleries. Detour to the <strong>Venice Canals</strong> (5 min, very photogenic).</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top"><span class="badge lu">Lunch</span><span class="card-time">12:00 PM</span></div>
+    <div class="card-body">
+      <div class="card-name">Gjusta</div>
+      <div class="card-type">California Bakery & Deli — Venice</div>
+      <p class="card-desc"><strong>Smoked fish plates and sandwiches</strong> are spectacular — lamb merguez and pastrami standouts. Patio seating. Croissants are 10/10 for the road.</p>
+      <div class="tags"><span class="t">⭐ 4.4</span><span class="t">~45 min</span><span class="t">$$</span></div>
+    </div>
+    <a class="card-link" href="https://maps.apple.com/?q=Gjusta+Venice&ll=33.9952,-118.4745&z=17" target="_blank">
+      <div><span>Open in Maps</span><br><span class="ad">320 Sunset Ave, Venice</span></div>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-top"><span class="badge sn">Snack</span><span class="card-time">2:00 PM</span></div>
+    <div class="card-body">
+      <div class="card-name">Layla Bagels ★★</div>
+      <div class="card-type">NYC-Rivaling Bagels — Santa Monica</div>
+      <p class="card-desc"><strong>Your double-starred pick.</strong> Get The Scarlett on the way back from the beach. Some say better than Brooklyn.</p>
+      <div class="tags"><span class="t w">⏰ Closes 2:30pm</span><span class="t">⭐ 4.5</span><span class="t">$</span></div>
+    </div>
+    <a class="card-link" href="https://maps.apple.com/?q=Layla+Bagels+Santa+Monica&ll=34.0116,-118.4680&z=17" target="_blank">
+      <div><span>Open in Maps</span><br><span class="ad">1614 Ocean Park Blvd</span></div>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+
+  <div class="gap">
+    <div class="gap-line"></div>
+    <div class="gap-body">
+      <div class="gap-label">Afternoon options</div>
+      <div class="gap-text"><strong>The Grove</strong> — outdoor shopping, fountain shows, Farmers Market since 1934. <strong>Or Runyon Canyon</strong> — classic sunset hike, 45-min loop, panoramic views. <strong>Or</strong> hotel pool before dinner.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top"><span class="badge di">Dinner</span><span class="card-time">7:00 PM</span></div>
+    <div class="card-body">
+      <div class="card-name">Sadaf</div>
+      <div class="card-type">Persian — Beverly Hills</div>
+      <p class="card-desc">10 min from hotel. <strong>Soltani</strong> (koobideh + barg combo) and lamb chops. Walk to <strong>Go Greek Yogurt</strong> after — rose and sour cherry flavors unique to LA.</p>
+      <div class="tags"><span class="t">⭐ 4.3</span><span class="t">Closes 9pm</span><span class="t">~75 min</span><span class="t">$$</span></div>
+    </div>
+    <a class="card-link" href="https://maps.apple.com/?q=Sadaf+Restaurant+Beverly+Hills&ll=34.0632,-118.3760&z=17" target="_blank">
+      <div><span>Open in Maps</span><br><span class="ad">272 S La Cienega Blvd</span></div>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ══ DAY 3 — TUESDAY ══ -->
+<section class="day" id="day3">
+  <div class="day-head"><div class="day-num">03</div><div class="day-eye">Day Three</div></div>
+  <h2 class="day-title">Downtown & Little Tokyo</h2>
+  <p class="day-sub">DTLA burritos, art & architecture, soup dumplings, sushi farewell. Rest up — Catalina tomorrow.</p>
+
+  <div class="card">
+    <div class="card-top"><span class="badge bk">Breakfast</span><span class="card-time">8:00 AM</span></div>
+    <div class="card-body">
+      <div class="card-name">Wake and Late</div>
+      <div class="card-type">Breakfast Burritos — DTLA</div>
+      <p class="card-desc"><strong>Steak burrito</strong> with cilantro crema on the side. Fresh-squeezed OJ non-negotiable. Tiny spot, big flavor.</p>
+      <div class="tags"><span class="t">⭐ 3.9</span><span class="t">~30 min</span><span class="t">$</span></div>
+    </div>
+    <a class="card-link" href="https://maps.apple.com/?q=Wake+and+Late+DTLA&ll=34.0452,-118.2495&z=17" target="_blank">
+      <div><span>Open in Maps</span><br><span class="ad">105 E 6th St, DTLA</span></div>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+
+  <div class="gap">
+    <div class="gap-line"></div>
+    <div class="gap-body">
+      <div class="gap-label">DTLA exploring · 9–11 AM</div>
+      <div class="gap-text"><strong>Arts District</strong> — murals, galleries, coffee. <strong>The Broad</strong> (free, book timed entry) — Infinity Mirrored Room. <strong>Walt Disney Concert Hall</strong> architecture. <strong>Grand Central Market</strong> since 1917. Then drive to Century City via <strong>Randy's Donuts</strong> — giant rooftop donut from Iron Man 2, quick photo stop.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top"><span class="badge lu">Lunch</span><span class="card-time">11:30 AM</span></div>
+    <div class="card-body">
+      <div class="card-name">Din Tai Fung</div>
+      <div class="card-type">Soup Dumplings — Century City</div>
+      <p class="card-desc">XLB are the main event. <strong>Pro hack:</strong> order spicy wontons + sesame noodles and mix them. Reserve on Yelp — walk-ins wait 60+ min.</p>
+      <div class="tags"><span class="t">⭐ 4.5</span><span class="t">Reserve on Yelp</span><span class="t">~60 min</span><span class="t">$$</span></div>
+    </div>
+    <a class="card-link" href="https://maps.apple.com/?q=Din+Tai+Fung+Century+City&ll=34.0582,-118.4174&z=17" target="_blank">
+      <div><span>Open in Maps</span><br><span class="ad">10250 Santa Monica Blvd</span></div>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+
+  <div class="gap">
+    <div class="gap-line"></div>
+    <div class="gap-body">
+      <div class="gap-label">Afternoon options</div>
+      <div class="gap-text"><strong>LACMA</strong> — Urban Light lamp installation, great photo. <strong>Hollywood Blvd</strong> — Walk of Fame, Chinese Theatre. <strong>Sunlife Organics</strong> at Century City for açaí (Samurai Bowl). <strong>Or</strong> hotel pool.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top"><span class="badge di">Farewell Dinner</span><span class="card-time">6:00 PM</span></div>
+    <div class="card-body">
+      <div class="card-name">Sushi Enya</div>
+      <div class="card-type">Sushi — Little Tokyo</div>
+      <p class="card-desc"><strong>Grand finale for mainland LA.</strong> Sit at the bar, ask for chef's recs. Crunchy Vegas roll is the fan favorite. Opens 5:30pm Tue.</p>
+      <div class="tags"><span class="t">⭐ 4.6</span><span class="t">~75 min</span><span class="t">$$</span></div>
+    </div>
+    <a class="card-link" href="https://maps.apple.com/?q=Sushi+Enya+Little+Tokyo&ll=34.0497,-118.2397&z=17" target="_blank">
+      <div><span>Open in Maps</span><br><span class="ad">343 1st St, Little Tokyo</span></div>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
 
   <div class="alert">
-    <span class="alert-icon">⚡</span>
-    <div><strong>Howlin' Ray's closes Mon & Tue.</strong> This is your one window. Get in line by 5pm — they shut doors at 7.</div>
+    <span>🏝</span>
+    <div><strong>Catalina tomorrow!</strong> Alarm for 6:45am. Ferry terminal by 7:30am (~45 min drive). Book tickets tonight at catalinaexpress.com.</div>
+  </div>
+</section>
+
+<!-- ══ DAY 4 — CATALINA ══ -->
+<section class="day" id="day4">
+  <div class="day-head"><div class="day-num">04</div><div class="day-eye">Day Four</div></div>
+  <h2 class="day-title">Catalina Island 🏝</h2>
+  <p class="day-sub">Morning ferry, golf carts through Avalon, seafood on the harbor, snorkeling or beach lounging, boat home at sunset.</p>
+
+  <div class="alert">
+    <span>🎟</span>
+    <div><strong>catalinaexpress.com</strong> — ~$92 RT from Long Beach. Book ASAP, ferries sell out. Check in 1hr early. Port parking $24.95/day. Bring a jacket.</div>
   </div>
 
-  <!-- Activity -->
-  <div class="between">
-    <div class="between-line"></div>
-    <div class="between-content">
-      <div class="between-label">After check-in</div>
-      <div class="between-text">Paul Smith Pink Wall — 5 min from hotel on Melrose. Quick photo in golden hour light, then head east.</div>
+  <div class="card">
+    <div class="card-top"><span class="badge fe">Ferry Out</span><span class="card-time">8:30 AM</span></div>
+    <div class="card-body">
+      <div class="card-name">Catalina Express</div>
+      <div class="card-type">Long Beach → Avalon — ~1 hour</div>
+      <p class="card-desc"><strong>Leave WeHo by 7:15am.</strong> Coffee at the terminal. Upper deck for ocean views and dolphins. Arrive ~9:30am in Avalon — a car-free town that feels Mediterranean.</p>
+      <div class="tags"><span class="t">~$92 RT</span><span class="t">1 hr crossing</span></div>
     </div>
-  </div>
-
-  <!-- DINNER -->
-  <div class="course">
-    <div class="course-header">
-      <span class="course-label dinner">Dinner</span>
-      <span class="course-time">5:00 PM</span>
-    </div>
-    <div class="course-body">
-      <div class="course-name">Howlin' Ray's</div>
-      <div class="course-type">Nashville Hot Chicken — Chinatown</div>
-      <p class="course-desc"><strong>The single most important stop of the trip.</strong> Get the sando at Hot or Medium spice. Expect a 30–45 min line — it moves fast. 4.7★ from 4,300+ reviews. Worth every minute.</p>
-      <div class="course-tags">
-        <span class="tag warn">Closes 7pm Sun</span>
-        <span class="tag warn">Closed Mon & Tue</span>
-        <span class="tag">⭐ 4.7</span>
-        <span class="tag">~75 min total</span>
-      </div>
-    </div>
-    <a class="course-action" href="https://maps.apple.com/?q=Howlin+Rays&ll=34.0615,-118.2397&z=17" target="_blank">
-      <div><span>Open in Maps</span><br><span class="addr">727 N Broadway #128, Chinatown</span></div>
+    <a class="card-link" href="https://maps.apple.com/?q=Catalina+Express+Long+Beach&ll=33.7627,-118.1880&z=17" target="_blank">
+      <div><span>Open in Maps</span><br><span class="ad">320 Golden Shore, Long Beach</span></div>
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
     </a>
   </div>
 
-  <!-- Activity -->
-  <div class="between">
-    <div class="between-line"></div>
-    <div class="between-content">
-      <div class="between-label">Heading west</div>
-      <div class="between-text">Drive through the Arts District — worth a quick stroll if you have energy. Otherwise, straight to dessert.</div>
+  <div class="card">
+    <div class="card-top"><span class="badge bk">Breakfast</span><span class="card-time">9:45 AM</span></div>
+    <div class="card-body">
+      <div class="card-name">The Lobster Trap</div>
+      <div class="card-type">Seafood & Breakfast — Avalon Harbor</div>
+      <p class="card-desc">Right on the waterfront. <strong>Huevos rancheros</strong> or eggs & bacon with fresh OJ watching the boats. Walk-ins only, midweek mornings are easy.</p>
+      <div class="tags"><span class="t">⭐ 4.2</span><span class="t">Walk-ins only</span><span class="t">~30 min</span></div>
     </div>
-  </div>
-
-  <!-- DESSERT 1 -->
-  <div class="course">
-    <div class="course-header">
-      <span class="course-label dessert">Dessert</span>
-      <span class="course-time">7:00 PM</span>
-    </div>
-    <div class="course-body">
-      <div class="course-name">Salt & Straw</div>
-      <div class="course-type">Artisan Ice Cream — Arts District</div>
-      <p class="course-desc">Perfect hot-chicken cooldown. Sea Salt with Caramel Ribbons is the move. Open til 11pm — no rush at all.</p>
-      <div class="course-tags">
-        <span class="tag">⭐ 4.7</span>
-        <span class="tag">~20 min</span>
-      </div>
-    </div>
-    <a class="course-action" href="https://maps.apple.com/?q=Salt+and+Straw+Arts+District+LA&ll=34.0460,-118.2355&z=17" target="_blank">
-      <div><span>Open in Maps</span><br><span class="addr">829 E 3rd St, Arts District</span></div>
+    <a class="card-link" href="https://maps.apple.com/?q=Lobster+Trap+Avalon+Catalina&ll=33.3439,-118.3271&z=17" target="_blank">
+      <div><span>Open in Maps</span><br><span class="ad">128 Catalina St, Avalon</span></div>
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
     </a>
   </div>
 
-  <!-- NIGHTCAP -->
-  <div class="course">
-    <div class="course-header">
-      <span class="course-label snack">Nightcap</span>
-      <span class="course-time">8:15 PM</span>
+  <div class="card">
+    <div class="card-top"><span class="badge ac">Activity</span><span class="card-time">10:30 AM</span></div>
+    <div class="card-body">
+      <div class="card-name">Golf Cart Tour</div>
+      <div class="card-type">Self-Guided — 2 hours around Avalon</div>
+      <p class="card-desc">Rent a 4-seater — drive to <strong>Mt. Ada viewpoint</strong>, the Casino building, harbor panoramas. End at <strong>Wrigley Memorial & Botanical Garden</strong>. Book ahead at catalinaislandgolfcart.com. Drivers 25+.</p>
+      <div class="tags"><span class="t">~$130 / 2 hrs</span><span class="t w">💵 Some cash only</span><span class="t">Book ahead</span></div>
     </div>
-    <div class="course-body">
-      <div class="course-name">The Bigg Chill</div>
-      <div class="course-type">Frozen Yogurt — West LA</div>
-      <p class="course-desc"><strong>4.9★ from 4,400+ reviews</strong> — arguably the best froyo in Los Angeles. On the way back to the hotel. The perfect nightcap to day one.</p>
-      <div class="course-tags">
-        <span class="tag warn">💵 Cash Only</span>
-        <span class="tag">⭐ 4.9</span>
-        <span class="tag">Closes 10pm</span>
-      </div>
+    <a class="card-link" href="https://maps.apple.com/?q=Catalina+Island+Golf+Cart&ll=33.3435,-118.3260&z=17" target="_blank">
+      <div><span>Open in Maps</span><br><span class="ad">625 Crescent Ave, Avalon</span></div>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+
+  <div class="gap">
+    <div class="gap-line"></div>
+    <div class="gap-body">
+      <div class="gap-label">Midday · Shopping & Drinks</div>
+      <div class="gap-text">Return the cart, walk the harbor. Browse Crescent Ave — local art, souvenirs. Order a <strong>Buffalo Milk</strong> from any waterfront bar — frozen cocktail with banana, Kahlúa, vodka & whipped cream. Island's signature drink.</div>
     </div>
-    <a class="course-action" href="https://maps.apple.com/?q=The+Bigg+Chill&ll=34.0437,-118.4314&z=17" target="_blank">
-      <div><span>Open in Maps</span><br><span class="addr">10850 W Olympic Blvd</span></div>
+  </div>
+
+  <div class="card">
+    <div class="card-top"><span class="badge lu">Lunch</span><span class="card-time">12:30 PM</span></div>
+    <div class="card-body">
+      <div class="card-name">Bluewater Grill</div>
+      <div class="card-type">Seafood — Avalon Harbor</div>
+      <p class="card-desc"><strong>Best restaurant on the island.</strong> Built on pilings over the water — harbor views, sailboats, Casino backdrop. <strong>Fish & chips, clam chowder, or catch of the day.</strong> Reserve on OpenTable.</p>
+      <div class="tags"><span class="t">⭐ 4.3</span><span class="t">Reserve ahead</span><span class="t">~60 min</span><span class="t">$$</span></div>
+    </div>
+    <a class="card-link" href="https://maps.apple.com/?q=Bluewater+Grill+Avalon+Catalina&ll=33.3448,-118.3275&z=17" target="_blank">
+      <div><span>Open in Maps</span><br><span class="ad">306 Crescent Ave, Avalon</span></div>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+
+  <div class="gap">
+    <div class="gap-line"></div>
+    <div class="gap-body">
+      <div class="gap-label">Afternoon · Pick one</div>
+      <div class="gap-text"><strong>Snorkeling at Casino Point</strong> — crystal water, kelp forests, garibaldi fish. Gear ~$15–20/hr. Great for beginners. <strong>Or Descanso Beach Club</strong> — Avalon's only beach bar. Cabanas, cocktails, zipline, kayaks. Most chill afternoon option.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top"><span class="badge sn">Treat</span><span class="card-time">3:30 PM</span></div>
+    <div class="card-body">
+      <div class="card-name">Lloyd's of Avalon</div>
+      <div class="card-type">Candy & Ice Cream — Since 1934</div>
+      <p class="card-desc"><strong>Hand-dipped ice cream on a waffle cone</strong>, watch taffy pulled in the window. Perfect pre-ferry stroll on Crescent Ave.</p>
+      <div class="tags"><span class="t">Since 1934</span><span class="t">~15 min</span><span class="t">$</span></div>
+    </div>
+    <a class="card-link" href="https://maps.apple.com/?q=Lloyds+of+Avalon+Catalina&ll=33.3442,-118.3266&z=17" target="_blank">
+      <div><span>Open in Maps</span><br><span class="ad">315 Crescent Ave, Avalon</span></div>
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-top"><span class="badge fe">Ferry Home</span><span class="card-time">4:30 PM</span></div>
+    <div class="card-body">
+      <div class="card-name">Catalina Express</div>
+      <div class="card-type">Avalon → Long Beach — ~1 hour</div>
+      <p class="card-desc">Terminal 30 min early. Upper deck facing west for <strong>golden-hour views</strong>. Mainland by ~5:30pm, WeHo ~6:15pm. Dinner: <strong>Joan's on Third</strong> (across from Palihouse) or order in.</p>
+      <div class="tags"><span class="t">30 min early</span><span class="t">Sunset views</span></div>
+    </div>
+    <a class="card-link" href="https://maps.apple.com/?q=Catalina+Express+Avalon&ll=33.3440,-118.3270&z=17" target="_blank">
+      <div><span>Open in Maps</span><br><span class="ad">Green Pleasure Pier, Avalon</span></div>
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
     </a>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     DAY 2 — MONDAY
-     ═══════════════════════════════════════════════ -->
-<section class="chapter" id="day2">
-  <div class="ch-eyebrow">Chapter Two</div>
-  <div class="ch-num">02</div>
-  <h2 class="ch-title">Beach to Beverly Hills</h2>
-  <p class="ch-subtitle">Start in Santa Monica, drift through Venice, explore the boardwalk and Abbot Kinney, then arc back east for an afternoon matcha and a Persian feast in Beverly Hills.</p>
-
-  <!-- BREAKFAST -->
-  <div class="course">
-    <div class="course-header">
-      <span class="course-label breakfast">Breakfast</span>
-      <span class="course-time">8:00 AM</span>
-    </div>
-    <div class="course-body">
-      <div class="course-name">Layla Bagels ★★</div>
-      <div class="course-type">NYC-Rivaling Bagels — Santa Monica</div>
-      <p class="course-desc"><strong>Your double-starred pick.</strong> The Scarlett is the one to get. Line builds fast — arrive early. Some say these are better than what you get back home in Brooklyn. Closes 2:30pm.</p>
-      <div class="course-tags">
-        <span class="tag">⭐ 4.5</span>
-        <span class="tag">~40 min</span>
-        <span class="tag">$</span>
-      </div>
-    </div>
-    <a class="course-action" href="https://maps.apple.com/?q=Layla+Bagels+Santa+Monica&ll=34.0116,-118.4680&z=17" target="_blank">
-      <div><span>Open in Maps</span><br><span class="addr">1614 Ocean Park Blvd, Santa Monica</span></div>
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-    </a>
-  </div>
-
-  <!-- Activity -->
-  <div class="between">
-    <div class="between-line"></div>
-    <div class="between-content">
-      <div class="between-label">Between bites</div>
-      <div class="between-text">Santa Monica Pier — ride the Ferris wheel, walk the beach, browse Third Street Promenade. End of Route 66. Then drift down to Venice and stroll Abbot Kinney Blvd.</div>
-    </div>
-  </div>
-
-  <!-- LUNCH -->
-  <div class="course">
-    <div class="course-header">
-      <span class="course-label lunch">Lunch</span>
-      <span class="course-time">12:00 PM</span>
-    </div>
-    <div class="course-body">
-      <div class="course-name">Gjusta</div>
-      <div class="course-type">California Bakery & Deli — Venice</div>
-      <p class="course-desc">More than pastries — the smoked fish plates and sandwiches are spectacular for a proper lunch. Grab a seat on the patio. The croissants are 10/10 if you want one for the road. Closes 4pm.</p>
-      <div class="course-tags">
-        <span class="tag">⭐ 4.4</span>
-        <span class="tag">~45 min</span>
-        <span class="tag">$$</span>
-      </div>
-    </div>
-    <a class="course-action" href="https://maps.apple.com/?q=Gjusta+Venice&ll=33.9952,-118.4745&z=17" target="_blank">
-      <div><span>Open in Maps</span><br><span class="addr">320 Sunset Ave, Venice</span></div>
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-    </a>
-  </div>
-
-  <!-- Activity -->
-  <div class="between">
-    <div class="between-line"></div>
-    <div class="between-content">
-      <div class="between-label">Heading east</div>
-      <div class="between-text">Appledoll pop-up on Abbot Kinney if you haven't hit it yet — photo booth + cute shops. Then cruise back toward WeHo.</div>
-    </div>
-  </div>
-
-  <!-- SNACK -->
-  <div class="course">
-    <div class="course-header">
-      <span class="course-label snack">Afternoon</span>
-      <span class="course-time">2:30 PM</span>
-    </div>
-    <div class="course-body">
-      <div class="course-name">Community Goods</div>
-      <div class="course-type">The Bieber Café — West Hollywood</div>
-      <p class="course-desc">The matcha here is arguably the best in LA — order it. Expect a line; arrive before 3pm or risk them selling out. <strong>Closes at 4pm on weekdays.</strong></p>
-      <div class="course-tags">
-        <span class="tag warn">⏰ Closes 4pm</span>
-        <span class="tag">⭐ 4.3</span>
-        <span class="tag">~45 min</span>
-      </div>
-    </div>
-    <a class="course-action" href="https://maps.apple.com/?q=Community+Goods+LA&ll=34.0842,-118.3636&z=17" target="_blank">
-      <div><span>Open in Maps</span><br><span class="addr">710 N Edinburgh Ave, WeHo</span></div>
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-    </a>
-  </div>
-
-  <!-- Activity -->
-  <div class="between">
-    <div class="between-line"></div>
-    <div class="between-content">
-      <div class="between-label">Golden hour</div>
-      <div class="between-text">Rest at the hotel, freshen up. Walk Melrose or the Grove if you want to explore. Dinner is 10 min away.</div>
-    </div>
-  </div>
-
-  <!-- DINNER -->
-  <div class="course">
-    <div class="course-header">
-      <span class="course-label dinner">Dinner</span>
-      <span class="course-time">7:00 PM</span>
-    </div>
-    <div class="course-body">
-      <div class="course-name">Sadaf</div>
-      <div class="course-type">Persian — Beverly Hills</div>
-      <p class="course-desc">Proper sit-down dinner, 10 min from the hotel. Order the <strong>Soltani</strong> (koobideh + barg combo) and the lamb chops. Modern and cozy. Closes 9pm weekdays.</p>
-      <div class="course-tags">
-        <span class="tag">⭐ 4.3</span>
-        <span class="tag">~75 min</span>
-        <span class="tag">$$</span>
-      </div>
-    </div>
-    <a class="course-action" href="https://maps.apple.com/?q=Sadaf+Restaurant+Beverly+Hills&ll=34.0632,-118.3760&z=17" target="_blank">
-      <div><span>Open in Maps</span><br><span class="addr">272 S La Cienega Blvd, Beverly Hills</span></div>
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-    </a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════
-     DAY 3 — TUESDAY
-     ═══════════════════════════════════════════════ -->
-<section class="chapter" id="day3">
-  <div class="ch-eyebrow">Chapter Three</div>
-  <div class="ch-num">03</div>
-  <h2 class="ch-title">Downtown Farewell</h2>
-  <p class="ch-subtitle">Burritos in DTLA, the most Instagrammed donut in America, soup dumplings at Century City, then a sushi send-off in Little Tokyo.</p>
-
-  <!-- BREAKFAST -->
-  <div class="course">
-    <div class="course-header">
-      <span class="course-label breakfast">Breakfast</span>
-      <span class="course-time">8:00 AM</span>
-    </div>
-    <div class="course-body">
-      <div class="course-name">Wake and Late</div>
-      <div class="course-type">Breakfast Burritos — DTLA</div>
-      <p class="course-desc">Get the <strong>steak burrito</strong> with cilantro crema on the side. Fresh-squeezed OJ is non-negotiable. Tiny spot, big flavor. Closes 2pm.</p>
-      <div class="course-tags">
-        <span class="tag">⭐ 3.9</span>
-        <span class="tag">~30 min</span>
-        <span class="tag">$</span>
-      </div>
-    </div>
-    <a class="course-action" href="https://maps.apple.com/?q=Wake+and+Late+DTLA&ll=34.0452,-118.2495&z=17" target="_blank">
-      <div><span>Open in Maps</span><br><span class="addr">105 E 6th St, DTLA</span></div>
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-    </a>
-  </div>
-
-  <!-- Activity -->
-  <div class="between">
-    <div class="between-line"></div>
-    <div class="between-content">
-      <div class="between-label">On the way</div>
-      <div class="between-text">Randy's Donuts in Inglewood — the giant rooftop donut from Iron Man 2. Open 24hrs. Grab a glazed donut, take the photo, keep moving. 15 min stop.</div>
-    </div>
-  </div>
-
-  <!-- LUNCH -->
-  <div class="course">
-    <div class="course-header">
-      <span class="course-label lunch">Lunch</span>
-      <span class="course-time">11:30 AM</span>
-    </div>
-    <div class="course-body">
-      <div class="course-name">Din Tai Fung</div>
-      <div class="course-type">Soup Dumplings — Century City</div>
-      <p class="course-desc">XLB (soup dumplings) are the main event. <strong>Pro hack:</strong> order the spicy wontons and sesame noodles, then mix them together. Book a reservation on Yelp to skip the line.</p>
-      <div class="course-tags">
-        <span class="tag">⭐ 4.5</span>
-        <span class="tag">~60 min</span>
-        <span class="tag">$$</span>
-      </div>
-    </div>
-    <a class="course-action" href="https://maps.apple.com/?q=Din+Tai+Fung+Century+City&ll=34.0582,-118.4174&z=17" target="_blank">
-      <div><span>Open in Maps</span><br><span class="addr">10250 Santa Monica Blvd, Century City</span></div>
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-    </a>
-  </div>
-
-  <!-- Activity -->
-  <div class="between">
-    <div class="between-line"></div>
-    <div class="between-content">
-      <div class="between-label">Free afternoon</div>
-      <div class="between-text">Hotel pool, shop Melrose & Fairfax, hit any spots you missed from Days 1–2. Recharge for the farewell dinner.</div>
-    </div>
-  </div>
-
-  <!-- SNACK -->
-  <div class="course">
-    <div class="course-header">
-      <span class="course-label snack">Snack</span>
-      <span class="course-time">3:30 PM</span>
-    </div>
-    <div class="course-body">
-      <div class="course-name">Sunlife Organics</div>
-      <div class="course-type">Açaí & Smoothie Bowls — Century City</div>
-      <p class="course-desc">If you're still at Century City, swing by. Try the Samurai Bowl. Light, refreshing, won't kill your dinner appetite. 1 hour free parking in the mall garage.</p>
-      <div class="course-tags">
-        <span class="tag">⭐ 4.4</span>
-        <span class="tag">~20 min</span>
-        <span class="tag">$$</span>
-      </div>
-    </div>
-    <a class="course-action" href="https://maps.apple.com/?q=Sunlife+Organics+Century+City&ll=34.0583,-118.4180&z=17" target="_blank">
-      <div><span>Open in Maps</span><br><span class="addr">Westfield Century City</span></div>
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-    </a>
-  </div>
-
-  <!-- DINNER -->
-  <div class="course">
-    <div class="course-header">
-      <span class="course-label dinner">Farewell Dinner</span>
-      <span class="course-time">6:00 PM</span>
-    </div>
-    <div class="course-body">
-      <div class="course-name">Sushi Enya</div>
-      <div class="course-type">Sushi — Little Tokyo</div>
-      <p class="course-desc"><strong>The grand finale.</strong> Sit at the bar for the full experience — watch the chefs work and ask for their recommendations. The Crunchy Vegas roll is the fan favorite. Opens 5:30pm Tuesday.</p>
-      <div class="course-tags">
-        <span class="tag">⭐ 4.6</span>
-        <span class="tag">~75 min</span>
-        <span class="tag">$$</span>
-      </div>
-    </div>
-    <a class="course-action" href="https://maps.apple.com/?q=Sushi+Enya+Little+Tokyo&ll=34.0497,-118.2397&z=17" target="_blank">
-      <div><span>Open in Maps</span><br><span class="addr">343 1st St, Little Tokyo</span></div>
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-    </a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════
-     HONORABLE MENTIONS
-     ═══════════════════════════════════════════════ -->
+<!-- ══ HONORABLE MENTIONS ══ -->
 <section class="mentions" id="cuts">
-  <div class="ch-eyebrow">Didn't Make The Cut</div>
-  <h2 class="ch-title" style="margin-bottom:8px;">Honorable Mentions</h2>
-  <p class="ch-subtitle">Great spots that didn't fit the schedule. Swap them in if the mood strikes.</p>
-
+  <div class="day-eye" style="margin-bottom:4px">Didn't Make The Cut</div>
+  <h2 class="day-title" style="margin-bottom:4px">Honorable Mentions</h2>
+  <p class="day-sub">Swap any of these in if the mood strikes.</p>
   <div class="mentions-grid">
-    <div class="mention">
-      <div class="mention-name">Tu Cha</div>
-      <div class="mention-desc">TikTok-viral artistic desserts in Koreatown. Mango and peach are standouts. Doable Sunday night if you skip Salt & Straw. Closes 9pm Sun.</div>
-      <span class="mention-tag">Koreatown · Swap for Salt & Straw</span>
-    </div>
-    <div class="mention">
-      <div class="mention-name">Sidecar Doughnuts</div>
-      <div class="mention-desc">Made-to-order, still warm. Malasada-style doughnuts are the best actual donuts on the list. 5 min from Santa Monica Pier — easy Mon add-on.</div>
-      <span class="mention-tag">Santa Monica · Quick Mon stop</span>
-    </div>
-    <div class="mention">
-      <div class="mention-name">Go Greek Yogurt</div>
-      <div class="mention-desc">Rose and sour cherry flavors unique to here. Open til midnight in Beverly Hills. Easy post-Sadaf dessert walk on Monday night.</div>
-      <span class="mention-tag">Beverly Hills · Mon nightcap</span>
-    </div>
-    <div class="mention">
-      <div class="mention-name">Joan's on Third</div>
-      <div class="mention-desc">Might be the "Obligatory Jones" — famous for Chinese chicken salad. Literally across the street from Palihouse. Walk over for any meal.</div>
-      <span class="mention-tag">Across from hotel · Anytime</span>
-    </div>
-    <div class="mention">
-      <div class="mention-name">Jus' Poke</div>
-      <div class="mention-desc">Redondo Beach, 40 min from Santa Monica. 4.8★ with massive portions. Only if you want a beach town detour Monday afternoon.</div>
-      <span class="mention-tag">40 min from SM · Detour</span>
-    </div>
-    <div class="mention">
-      <div class="mention-name">Bear Flag Fish Co</div>
-      <div class="mention-desc">Amazing poke but it's in Huntington Beach — over an hour each way. Save it for an Orange County trip.</div>
-      <span class="mention-tag">1+ hr each way · Skip</span>
-    </div>
+    <div class="m"><div class="m-name">Howlin' Ray's 🔥</div><div class="m-desc">Nashville hot chicken, Chinatown. 4.7★. <strong>Closed Mon & Tue.</strong> Sando at Hot or Medium. 30–45 min line.</div><span class="m-tag">Sun only · Closes 7pm</span></div>
+    <div class="m"><div class="m-name">Tu Cha</div><div class="m-desc">TikTok-viral artistic desserts, Koreatown. Mango + peach standouts.</div><span class="m-tag">Koreatown · Closes 9pm Sun</span></div>
+    <div class="m"><div class="m-name">Salt & Straw</div><div class="m-desc">Artisan ice cream, Arts District. Sea Salt w/ Caramel Ribbons. Open til 11pm.</div><span class="m-tag">Arts District</span></div>
+    <div class="m"><div class="m-name">Sidecar Doughnuts</div><div class="m-desc">Made-to-order, still warm. 5 min from Santa Monica Pier.</div><span class="m-tag">Santa Monica</span></div>
+    <div class="m"><div class="m-name">Joan's on Third</div><div class="m-desc">Famous Chinese chicken salad. Literally across from Palihouse.</div><span class="m-tag">Across from hotel</span></div>
+    <div class="m"><div class="m-name">Topside by NDMK</div><div class="m-desc">Rooftop dining in Avalon, harbor views. Reserve on OpenTable.</div><span class="m-tag">Catalina · Upscale lunch swap</span></div>
   </div>
 </section>
 
-<!-- ═══════ TIPS ═══════ -->
 <section class="tips">
   <div class="tips-box">
     <div class="tips-title">Field Notes</div>
     <ul class="tips-list">
-      <li><strong>💵 The Bigg Chill is cash only.</strong> Hit an ATM before Sunday evening.</li>
-      <li><strong>🅿️ Parking:</strong> Download SpotHero or ParkWhiz. Street meters run $2–4/hr. Century City mall has 1hr free in the garage.</li>
-      <li><strong>🚗 Traffic:</strong> Avoid the 405 between 4–7pm. Surface streets are often faster. Sunday evening shouldn't be bad.</li>
-      <li><strong>📱 Din Tai Fung:</strong> Reserve on Yelp. Walk-in waits can exceed an hour on weekdays.</li>
-      <li><strong>🎒 Randy's Donuts:</strong> It's a photo stop, not a gourmet stop. Grab a glazed, take the pic, move on. 15 min max.</li>
+      <li><strong>🎟 Catalina:</strong> catalinaexpress.com — ~$92 RT, 1hr from Long Beach. Book ASAP. Bring a jacket.</li>
+      <li><strong>💵 Cash:</strong> Bigg Chill and some Catalina golf cart rentals are cash only.</li>
+      <li><strong>🍕 Jones:</strong> Call (323) 850-1726, 11am–7pm. Opens 7pm nightly.</li>
+      <li><strong>🅿️ Parking:</strong> SpotHero app. Century City: 1hr free. Ferry port: $24.95/day.</li>
+      <li><strong>🚗 Traffic:</strong> Avoid the 405 from 4–7pm. Surface streets often faster.</li>
+      <li><strong>📱 Din Tai Fung:</strong> Reserve on Yelp. Walk-in waits 60+ min.</li>
+      <li><strong>☀️ Sunscreen:</strong> SPF 50, especially on the water to Catalina.</li>
     </ul>
   </div>
 </section>
 
-<!-- ═══════ FOOTER ═══════ -->
 <div class="footer">
   <div class="footer-mark">Bon appétit, Los Angeles.</div>
-  <p class="footer-sub">Palihouse West Hollywood · Sun 4PM → Tue Night</p>
+  <p class="footer-sub">Palihouse West Hollywood · Sun 4PM → Wed Night</p>
 </div>
 
 <script>
 const ss=document.querySelectorAll('section[id]'),nl=document.querySelectorAll('.nav a');
-const ob=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){const id=en.target.id;nl.forEach(l=>{l.classList.toggle('active',l.getAttribute('href')==='#'+id)})}})},{rootMargin:'-56px 0px -65% 0px',threshold:0});
+const ob=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){const id=en.target.id;nl.forEach(l=>{l.classList.toggle('active',l.getAttribute('href')==='#'+id)})}})},{rootMargin:'-48px 0px -65% 0px',threshold:0});
 ss.forEach(s=>ob.observe(s));
 nl.forEach(l=>{l.addEventListener('click',()=>{nl.forEach(x=>x.classList.remove('active'));l.classList.add('active')})});
 </script>
